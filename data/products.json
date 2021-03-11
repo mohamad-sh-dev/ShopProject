@@ -1,0 +1,78 @@
+[
+    {
+        "name": "hero Product",
+        "summary": "Lorem ipsum dolor sit amet",
+        "description": "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet",
+        "price": "99",
+        "imageCover": "product-1-imageCover.jpg",
+        "images": [
+            "product-hero.jpg"
+        ],
+        "ratingAverage": 4.5
+    },
+    {
+        "name": "Product 1",
+        "summary": "Lorem ipsum dolor sit amet",
+        "description": "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet",
+        "price": "99",
+        "imageCover": "product-1-imageCover.jpg",
+        "images": [
+            "product-1.jpg"
+        ],
+        "ratingAverage": 4.5
+    },
+    {
+        "name": "Product 2",
+        "summary": "Lorem ipsum dolor sit amet",
+        "description": "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet",
+        "price": "99",
+        "imageCover": "product-1-imageCover.jpg",
+        "images": [
+            "product-2.jpg"
+        ],
+        "ratingAverage": 4.5
+    },
+    {
+        "name": "Product 3",
+        "summary": "Lorem ipsum dolor sit amet",
+        "description": "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet",
+        "price": "99",
+        "imageCover": "product-1-imageCover.jpg",
+        "images": [
+            "product-3.jpg"
+        ],
+        "ratingAverage": 4.5
+    },
+    {
+        "name": "Product 4",
+        "summary": "Lorem ipsum dolor sit amet",
+        "description": "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet",
+        "price": "99",
+        "imageCover": "product-1-imageCover.jpg",
+        "images": [
+            "product-4.jpg"
+        ],
+        "ratingAverage": 4.5
+    },
+    {
+        "name": "Product 5",
+        "summary": "Lorem ipsum dolor sit amet",
+        "description": "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet",
+        "price": "99",
+        "imageCover": "product-1-imageCover.jpg",
+        "images": [
+            "product-5.jpg"
+        ],
+        "ratingAverage": 4.5
+    },
+    {
+        "name": "Product 6",
+        "description": "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet",
+        "price": "99",
+        "imageCover": "product-1-imageCover.jpg",
+        "images": [
+            "product-6.jpg"
+        ],
+        "ratingAverage": 4.5
+    }
+]
