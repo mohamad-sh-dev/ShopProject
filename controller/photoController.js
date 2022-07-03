@@ -2,7 +2,6 @@ const catchAsync = require("../utils/cathAsync")
 const multer = require("multer")
 const sharp = require("sharp")
 
-// Counfig Multer 
 
 
 // Set Storage To MemoryStorage Who Access In Sharp As Buffer To Change Image Size 
@@ -15,16 +14,13 @@ const multerFilter = (req, file, callback) => {
     else callback(new AppError("Please Just Images Formated!!", 400), false)
 }
 
-// config multer
 const upload = multer({
     storage: multerStorage,
     fileFilter: multerFilter
 })
 
-// single method for single photo
 exports.uploadPhoto = upload.single("photo")
 
-// Resize Photo User With Sharp Module !
 exports.resizeUserPhoto = async (req, res, next) => {
     if (!req.file) return next()
     req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`
@@ -34,7 +30,6 @@ exports.resizeUserPhoto = async (req, res, next) => {
     next()
 }
 
-// fields method for arrays 
 exports.uploadTourPhoto = upload.fields([{
     // set names and counts of propertys 
         name: 'imageCover',

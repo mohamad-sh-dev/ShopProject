@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 
-const DB = process.env.DATABASE_URI.replace('<PASSWORD>',process.env.DATABASE_PASSWORD)
+const DB = process.env.DATABASE_URI
 
 const connection = async () => {
     try {

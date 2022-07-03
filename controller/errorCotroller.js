@@ -4,7 +4,6 @@ const handleCastErrorDB = err => {
     const message = `داده اشتباه ${err.path}: ${err.value}`
     return new AppError(message, 400)
 }
-
 const handleDuplicate = err => {
     const message = `${err.keyValue.name} is duplicate`
     return new AppError(message, 400)
@@ -26,6 +25,8 @@ const sendErrorDev = (err, req, res) => {
             error: err,
             stack: err.stack,
         })
+        
+       
     }
     // This is for rendered Website (Show errors with Renderd Page)
     if (err.name == "CastError" || "MongooseError") {
@@ -56,24 +57,6 @@ const sendErrorProd = (err, req, res) => {
 
 
     }
-    // This is for rendered Website (Show errors with Renderd Page)
-    console.log(err);
-    if (err.isOprational) {
-         
-        return res.status(err.statusCode).render("error", {
-            pageTitle: "Error",
-            layout: "./layouts/mainlayout",
-            message: err.message,
-            err
-
-        })
-    }
-    return res.status(err.statusCode).render("error", {
-        pageTitle: "Error",
-        layout: "./layouts/mainlayout",
-        message: "Try Again Later",
-
-    })
 }
 
 

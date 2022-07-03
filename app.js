@@ -5,6 +5,7 @@ const morgan = require("morgan")
 const exprLayyout = require ("express-ejs-layouts")
 const bodyParser = require("body-parser")
 const dotEnv = require("dotenv")
+const cors = require('cors') ;
 const ErrorGlobal = require("./controller/errorCotroller");
 
 const app = express()
@@ -44,10 +45,14 @@ app.set("views", path.join(__dirname, "views"))
 app.set("layout", "./layouts/mainlayout.ejs")
 
 // Routes
+app.use(cors())
 app.use("/api/v1/Products" ,require("./routes/productsRoutes"))
 app.use("/api/v1/Users" ,require("./routes/userRoutes"))
-app.use("/" ,require("./routes/viewRoutes"))
+app.use('/api/v1/Cart' , require("./routes/cartRoutes"))
+app.use("/api/v1/Payment" , require("./routes/paymentRoutes"))
+app.use('/api/v1/Orders' , require("./routes/orderRoutes"))
 app.use(ErrorGlobal)
+
 
 
 // Server 

@@ -1,8 +1,8 @@
 const mongoose = require("mongoose")
-
+const User = require('./users')
 const productSchema = new mongoose.Schema({
 
-    name: {
+    title: {
         type: String,
         required: [true, "محصول باید نام داشته باشد"],
     },
@@ -30,11 +30,26 @@ const productSchema = new mongoose.Schema({
         type:Number,
         required:[true, "محصول باید قیمت مشخص داشته باشد"]
     },
-    buyers :[{
-        type: mongoose.Schema.ObjectId,
-        ref: "Users"
-    }],
+    discount: {
+        type:Number , 
 
+    },
+    category:{
+        type:String , 
+        required:true
+    },
+    isSoldOut:{
+        type: Boolean , 
+        default:false
+    },
+    isExist:{
+        type:Boolean , 
+        default: true
+    },
+    isRecomended:{
+        type: Boolean , 
+        default:false,
+    }, 
     rantingAverage: {
         type: Number,
         default: 4.0,
@@ -42,6 +57,11 @@ const productSchema = new mongoose.Schema({
         min: [1.0, "امتیاز محصول نمیتواند کمتر از 1.0 باشد"],
         set: val => Math.round(val * 10) / 10
     },
+    userId :{
+        type: mongoose.Schema.ObjectId , 
+        ref: "User" 
+        //required : true
+    }
 },{
     toJSON: {
         virtuals:true
@@ -50,5 +70,12 @@ const productSchema = new mongoose.Schema({
         virtuals:true
     }
 })
+productSchema.virtual("reviews", {
+    ref: "Reviews",
+    foreignField: 'productId',
+    localField: '_id'
+});
 
-module.exports = mongoose.model("Products", productSchema)
+
+const product = mongoose.model("Product", productSchema)
+module.exports = product
