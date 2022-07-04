@@ -13,7 +13,7 @@ const app = express()
 
 // dotenv config
 dotEnv.config({
-    path: "./config/config.env"
+    path: "./config/.env"
 })
 
 // connection DB
