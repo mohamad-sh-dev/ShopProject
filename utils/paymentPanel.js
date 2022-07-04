@@ -1,8 +1,8 @@
 const axios = require('axios'); 
 class Payment {
-    constructor() {
+    constructor(request) {
         this.MerchantID = process.env.MERCHANT_ID ;
-        this.CallbackURL = `${req.protocol}://${req.get('host')}/api/v1/Payment` ;
+        this.CallbackURL = 'localhost:3000/api/v1/Payment' ;
         this.Description = 'Nothing to say for now';
         this.ToPaymentOperatorAccessUrl = process.env.TO_PAYMENT_OPERATOR_ACCESS_URL ;
         this.VerifyPaymentAccessUrl = process.env.VERIFY_PAYMENT_OPERATOR_ACCESS_URL ;
