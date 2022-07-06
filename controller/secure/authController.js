@@ -4,10 +4,8 @@ const {
 } = require("util")
 const crypto = require("crypto")
 
-const Code = require('../../model/verificationCode')
 const User = require("../../model/users")
 const AppError = require('../../utils/appErrors')
-const smsOperator = require('../../utils/smsPanel');
 const catchAsync = require('../../utils/cathAsync')
 
 const signToken = id => {
@@ -58,35 +56,6 @@ exports.signUp = catchAsync(async (req, res, next) => {
 
     //Create Token For User with Jwt
     createSendToken(newUser, 201, res)
-})
-exports.createVerifyCode = catchAsync(async (req, res, next) => {
-    const {
-        number
-    } = req.body;
-    const code = Math.floor(Math.random() * 100000)
-    await Code.create({
-        userNumber: number,
-        code
-    })
-    new smsOperator(null, code).send()
-    res.status(200).json({
-        status: "success",
-        message: "کد مورد نظر برای شما ارسال شد"
-    })
-})
-exports.checkVerifiyCode = catchAsync(async (req, res, next) => {
-    const {
-        code
-    } = req.body
-    const confirmCode = await Code.findOne({
-        code
-    })
-
-    if (!confirmCode) return next(new AppError("کد وارد شده صحیح نمیباشد لطفا مجددا تلاش نمایید", 403))
-    await Code.deleteOne({
-        code: enteredCode
-    })
-    createSendToken(confirmCode, 200, res)
 })
 exports.login = catchAsync(async (req, res, next) => {
     const {
