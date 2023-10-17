@@ -1,11 +1,12 @@
 const cathAsync = require("../utils/cathAsync");
 const Product = require("../model/products");
 const sendResponse = require("../utils/sendResponse");
+const AppError = require("../utils/appErrors");
 
 exports.addtoCart = cathAsync(async (req, res, next) => {
     const productId = req.params.id;
     const product = await Product.findById(productId)
-
+    if (!product) return next(new AppError("محصول یافت نشد", 404))
     const cart = await req.user.addToCart(product)
     // use loop for send better response 
     for (item of cart.cart.items)
@@ -36,6 +37,7 @@ exports.getCheckOut = cathAsync(async (req, res, next) => {
         var total = 0
         var products
         var user = await req.user.populate('cart.items.productId').execPopulate()
+        console.log(user);
         products = await user.cart.items
         //    console.log(user.cart.items);
         // cal total price of user products

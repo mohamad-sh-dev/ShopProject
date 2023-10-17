@@ -10,7 +10,7 @@ dotenv.config({
 })
 const DB = process.env.DATABASE_URI
 mongoose
-  .connect("mongodb://127.0.0.1:27017/novin_shopDb", {
+  .connect("mongodb://127.0.0.1:27017/shopnex", {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false
@@ -18,9 +18,9 @@ mongoose
   .then(() => console.log('DB connection successful!'));
 
 // READ JSON FILE
-const users = JSON.parse(
-  fs.readFileSync(`${__dirname}/users.json`, 'utf-8')
-)
+// const users = JSON.parse(
+//   fs.readFileSync(`${__dirname}/users.json`, 'utf-8')
+// )
 const products = JSON.parse(
   fs.readFileSync(`${__dirname}/products.json`, 'utf-8')
 )

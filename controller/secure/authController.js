@@ -8,6 +8,7 @@ const User = require("../../model/users")
 const AppError = require('../../utils/appErrors')
 const catchAsync = require('../../utils/cathAsync')
 
+console.log(process.env.JWT_SECRET);
 const signToken = id => {
     return jwt.sign({
         id
@@ -73,8 +74,6 @@ exports.login = catchAsync(async (req, res, next) => {
     }).select('+password')
     console.log(user);
     //check user exist and password is Correct !
-    const test = (await user.ComparePassword(password, user.password))
-    console.log(test);
     if (!user || !(await user.ComparePassword(password, user.password))) {
         console.log('hi');
         return next(new AppError('شماره یا رمز عبور وارد شده صحیح نمیباشد', 401))
