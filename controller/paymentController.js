@@ -42,6 +42,7 @@ exports.payment = catchAsync(async (req, res, next) => {
         await payment.save({
             validateBeforeSave: false
         })
+        // sendResponse(`${process.env.REDIRECT_URL}${path.sep}${toPay.data.Authority}`, 'success')
         res.redirect(`${process.env.REDIRECT_URL}${path.sep}${toPay.data.Authority}`)
     } else {
         res.status(400).json({

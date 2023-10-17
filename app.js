@@ -1,60 +1,59 @@
-const path = require("path")
-const  express =require ('express')
+const path = require('path');
+const express = require('express');
 
-const morgan = require("morgan")
-const exprLayyout = require ("express-ejs-layouts")
-const bodyParser = require("body-parser")
-const dotEnv = require("dotenv")
-const cors = require('cors') ;
-const ErrorGlobal = require("./controller/errorCotroller");
+const morgan = require('morgan');
+const exprLayyout = require('express-ejs-layouts');
+const bodyParser = require('body-parser');
+const dotEnv = require('dotenv');
+const cors = require('cors');
+const ErrorGlobal = require('./controller/errorCotroller');
 
-const app = express()
+const app = express();
 
 
 // dotenv config
 dotEnv.config({
-    path: "./config/.env"
-})
+    path: './config/.env'
+});
 
 // connection DB
-const database = require("./config/database")
-database()
+
+const database = require('./config/database');
+database();
 
 // Morgan Config
-if(process.env.NODE_ENV === "development"){
-    app.use(morgan("dev"),)
+if(process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'));
 }
 
 // Handlle Errors
+ 
+
+// Body Parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended:false }));
 
 
+// Set static Folder
 
-// Body Parser 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended:false}))
-
-
-// Set static Folder 
-
-app.use(express.static(path.join(__dirname, "public")))
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Set View Engine
-app.use(exprLayyout)
-app.set("view engine", "ejs")
-app.set("views", path.join(__dirname, "views"))
-app.set("layout", "./layouts/mainlayout.ejs")
+app.use(exprLayyout);
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.set('layout', './layouts/mainlayout.ejs');
 
 // Routes
-app.use(cors())
-app.use("/api/v1/Products" ,require("./routes/productsRoutes"))
-app.use("/api/v1/Users" ,require("./routes/userRoutes"))
-app.use('/api/v1/Cart' , require("./routes/cartRoutes"))
-app.use("/api/v1/Payment" , require("./routes/paymentRoutes"))
-app.use('/api/v1/Orders' , require("./routes/orderRoutes"))
-app.use(ErrorGlobal)
+app.use(cors());
+app.use('/api/v1/Products', require('./routes/productsRoutes'));
+app.use('/api/v1/Users', require('./routes/userRoutes'));
+app.use('/api/v1/Cart', require('./routes/cartRoutes'));
+app.use('/api/v1/Payment', require('./routes/paymentRoutes'));
+app.use('/api/v1/Orders', require('./routes/orderRoutes'));
+app.use(ErrorGlobal);
 
-
-
-// Server 
-const port = process.env.PORT
-app.listen(port , console.log(`Server is runing on port ${port}`))
+ 
+// Server
+const port = process.env.PORT;
+app.listen(port, console.log(`Server is runing on port ${port}`));

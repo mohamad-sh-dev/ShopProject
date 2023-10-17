@@ -33,7 +33,6 @@ const userSchema = new mongoose.Schema({
     },
     passwordConfirm: {
         type: String,
-        required: [true, 'لطفا تکرار رمز عبور را وارد نمایید'],
         validate: {
             // This only works on CREATE and SAVE!!!
             validator: function (el) {
